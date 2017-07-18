@@ -329,7 +329,7 @@ class Main extends PluginBase{
     	if(isset($temp["hub"])){
     		if($player->getLevel()->getName() != $temp["hub"]["world"]){
     			if(Server::getInstance()->loadLevel($temp["hub"]["world"]) != false){
-    				$player->teleport(new Vector3($temp["hub"]["X"], $temp["hub"]["Y"], $temp["hub"]["Z"], $this->getServer()->getLevelByName($temp["hub"]["world"])), $temp["hub"]["Yaw"], $temp["hub"]["Pitch"]);
+    				$player->teleport(new Position($temp["hub"]["X"], $temp["hub"]["Y"], $temp["hub"]["Z"], $this->getServer()->getLevelByName($temp["hub"]["world"])), $temp["hub"]["Yaw"], $temp["hub"]["Pitch"]);
     				if($temp["enable-hub-message"] === true && $temp["show-messages-onjoin"] === true){
     					$player->sendMessage($this->translateColors("&", $this->getHubMessage($player)));
     				}
@@ -337,7 +337,7 @@ class Main extends PluginBase{
     				$player->sendMessage($this->translateColors("&", $this->getNoWorldMessage()));
     			}
     		}else{
-    			$player->teleport(new Vector3($temp["hub"]["X"], $temp["hub"]["Y"], $temp["hub"]["Z"]), $temp["hub"]["Yaw"], $temp["hub"]["Pitch"]);
+    			$player->teleport(new Position($temp["hub"]["X"], $temp["hub"]["Y"], $temp["hub"]["Z"]), $temp["hub"]["Yaw"], $temp["hub"]["Pitch"]);
     			if($temp["enable-hub-message"] === true && $temp["show-messages-onjoin"] === true){
     				$player->sendMessage($this->translateColors("&", $this->getHubMessage($player)));
     			}
